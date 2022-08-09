@@ -1,53 +1,35 @@
- function loguearcliente () {
-let cliente = prompt ("Bienvenido a nuestra tienda, Por favor ingrese su nombrey apellido")
-console.log(cliente)
-let existe = clientes.find((busqueda) => {
-return busqueda === cliente})
-if (existe){
-    alert("Bienvenido"  + " "+  existe)
+stockProductos = [
+    {id:1, nombre:"Harry's House", precio:3500, img: 'images/harryHouse.jpeg'},
+    {id:2, nombre:"Sour", precio:2600, img: 'images/sour.png'},
+    {id:3, nombre:"Folklore", precio:2500, img: 'images/folklore.jfif'},
+    {id:4, nombre:"Equals", precio:3200, img: 'images/equals.jpg'}
+]
+let carrito = [] 
+
+const contenedorProductos = document.getElementById("contenedor-productos")
+stockProductos.forEach((producto) =>{
+    const div = document.createElement('div')
+    div.classList.add('div-image')
+    div.innerHTML = `
+    <img src=${producto.img} alt= "" 
+    <br>
+    <p>${producto.nombre}</p>
+    <p>${producto.precio}</p>
+    <button id='agregar${producto.id}'>Agregar al carrito</button>
+    `
+
+contenedorProductos.appendChild(div)
+const boton = document.getElementById (`agregar${producto.id}`)
+boton.addEventListener('click', ()=>{
+    agregarCarrito(producto.id)
+})
+})
+
+const agregarCarrito = (prodId) =>{
+    const item= stockProductos.find ((prod) => prod.id === prodId)
+    carrito.push(item)
+    document.getElementById("cart-total").innerHTML= carrito.length;
+    localStorage.setItem("totalCarrito", carrito.length)
+
+    console.log(carrito)
 }
-else {
-    alert("No estas registrado, registrate y vuelve")
-}
-} 
-const clientes = ["Mario Coronado", "Post Malone", "Dua Lipa", "Santiago Heria", "Lionel Messi"]
-
-class Discos {
-    constructor(nombre, año, artista, precio) {
-        this.nombre = nombre;
-        this.año = año;
-        this.artista = artista;
-        this.precio = precio
-    }
-}
-
-let disco1 = new Discos ("Harry's house", 2022, "Harry Styles", 10000);
-let disco2 = new Discos ("Folklore", 2020, "Taylor Swift", 8000)
-let disco3 = new Discos ("Equals", 2021, "Ed sheeran", 9000)
-
-
-
-const carrito = [] 
-
-const sendinfo= () => {
-  carrito.push(disco1)}
-
-  const sendinfoT= () => {
-    carrito.push(disco2)}
-
-    const sendinfoF= () => {
-      carrito.push(disco3)}
-
-const input = document.getElementById("send")
-input.addEventListener("click", sendinfo)
-
-const inputT = document.getElementById("sendT")
-input.addEventListener("click", sendinfoT)
-
-const inputF = document.getElementById("sendF")
-input.addEventListener("click", sendinfoF)
-
-console.log(carrito)
-
-loguearcliente();
-
