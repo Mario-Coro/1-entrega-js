@@ -4,7 +4,8 @@ stockProductos = [
     {id:3, nombre:"Folklore", precio:2500, img: 'images/folklore.jfif'},
     {id:4, nombre:"Equals", precio:3200, img: 'images/equals.jpg'}
 ]
-let carrito = [] 
+let carrito =JSON.parse(localStorage.getItem("cart")) || []
+document.getElementById("cart-total").innerHTML= carrito.length;
 
 const contenedorProductos = document.getElementById("contenedor-productos")
 stockProductos.forEach((producto) =>{
@@ -13,9 +14,9 @@ stockProductos.forEach((producto) =>{
     div.innerHTML = `
     <img src=${producto.img} alt= "" 
     <br>
-    <p>${producto.nombre}</p>
-    <p>${producto.precio}</p>
-    <button id='agregar${producto.id}'>Agregar al carrito</button>
+    <p class="title">${producto.nombre}</p>
+    <p class="price">${producto.precio}</p>
+    <button class="add" id='agregar${producto.id}'>Agregar al carrito</button>
     `
 
 contenedorProductos.appendChild(div)
@@ -28,8 +29,15 @@ boton.addEventListener('click', ()=>{
 const agregarCarrito = (prodId) =>{
     const item= stockProductos.find ((prod) => prod.id === prodId)
     carrito.push(item)
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'SE AGREGO CON EXITO',
+        showConfirmButton: false,
+        timer: 1500,
+        width: "400px"
+      })
     document.getElementById("cart-total").innerHTML= carrito.length;
-    localStorage.setItem("totalCarrito", carrito.length)
-
-    console.log(carrito)
+    localStorage.setItem("cart", JSON.stringify(carrito))
 }
+ 
