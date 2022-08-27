@@ -11338,8 +11338,8 @@ font-family: 'Roboto Condensed', sans-serif;
 .cards {
   padding-top: 40px;
   display: grid;
-  grid-template-rows: 350px 350px;
-  grid-template-columns: 350px 350px ;
+  grid-template-rows: 350px 350px 350px;
+  grid-template-columns: 350px 350px 350px;
   row-gap: 20px;
   justify-content: center;
 }
@@ -11348,4 +11348,25 @@ font-family: 'Roboto Condensed', sans-serif;
   width: 40px;
   height: auto;
   
+}
+
+.tabla{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  font-size: 15px;
+  font-family: 'Roboto Condensed', sans-serif;;
+  padding-bottom: 10px;
+}
+
+.tabla img{
+  width: 80px;
+  height: auto;
+}
+
+.button-img img{
+  width: 35px;
+  height: auto;
 }

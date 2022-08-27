@@ -37,7 +37,7 @@
   
         <main id="contenedor-productos" class="cards"></main>
 
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" id="cardCart" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
            Productos del carrito
           </button>
         
@@ -49,17 +49,20 @@
                   <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="cards-modal">
-                  ...
+                <div class="modal-body" id="cardsModal">
+                  
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="modal-footer" id="modalFooter" >
+                  
                 </div>
               </div>
             </div>
           </div>
 
+
+          <section id="cards-modal">
+
+          </section>
   <input type="checkbox" id="check">
         <!-- Footer-->
         <footer class="py-5 bg-dark">
