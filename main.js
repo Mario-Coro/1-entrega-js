@@ -2,34 +2,32 @@ const metodofetch = ()=>{
     fetch('productos.json')
     .then((respose) => respose.json())
     .then((informacion)=>{
-        informacion.forEach((producto)=>{
-        const div = document.createElement('div')
-        div.classList.add('div-image')
-        div.innerHTML = `
+    informacion.forEach((producto)=>{
+    const div = document.createElement('div')
+    div.classList.add('div-image')
+    div.innerHTML = `
     <img src=${producto.img} alt= ""> 
     <br>
     <p class="title">${producto.nombre}</p>
     <p class="price">${producto.precio}</p>
-    <button class="add" id='agregar${producto.id}'>Agregar al carrito</button>
-    `
-    contenedorProductos.appendChild(div)})
+    <button class="add" id='agregar${producto.id}'>Agregar al carrito</button> `
+    contenedorProductos.appendChild(div)
+    const boton = document.getElementById (`agregar${producto.id}`)
+    boton.addEventListener('click', ()=>{ agregarCarrito(producto.id)})
+   
+})
  })
 }
-metodofetch()
 
+metodofetch()
 let carrito = JSON.parse(localStorage.getItem("cart")) || []
 const elementosCarrito = document.getElementById("cardsModal")
-actualizarCarrito()
-
-
-
+ actualizarCarrito()
 const contenedorProductos = document.getElementById("contenedor-productos")
- const boton = document.getElementById (`agregar${producto.id}`)
-boton.addEventListener('click', ()=>{agregarCarrito(producto.id)})
 
-const agregarCarrito = (Id) =>{
+    const agregarCarrito = (Id) =>{
     if(carrito.some((item)=> item.id === Id)){
-    cambiarNumeroDeUnidades("suma", Id);
+    cambiarNumeroDeUnidades("suma", Id)
     Swal.fire({
         position: 'center',
         icon: 'success',
@@ -38,12 +36,16 @@ const agregarCarrito = (Id) =>{
         timer: 1000,
         width: "400px"
       })
+      actualizarCarrito()
     }
-    else{
-        const item= stockProductos.find ((producto) => producto.id === Id)
+   else{
+        fetch('productos.json')
+        .then((respose) => respose.json())
+        .then((informacion)=>{
+        const item= informacion.find ((item) => item.id === Id)
           carrito.push({
-            ...item,
-            numeroDeUnidades: 1,
+           ...item,
+           numeroDeUnidades: 1,
           })
          Swal.fire({
           position: 'center',
@@ -53,12 +55,11 @@ const agregarCarrito = (Id) =>{
           timer: 1000,
           width: "400px"
         })
-        localStorage.setItem("cart", JSON.stringify(carrito))
-       
+        actualizarCarrito()
+    })
     }
-     actualizarCarrito()
 }
- 
+
 function cambiarNumeroDeUnidades(accion, id){
 carrito = carrito.map((item)=>{
     let numeroDeUnidades = item.numeroDeUnidades;
@@ -79,9 +80,10 @@ actualizarCarrito()
 }
 
 function actualizarCarrito(){
+    localStorage.setItem("cart", JSON.stringify(carrito))
     crearObj()
     totalPrecio()
-    localStorage.setItem("cart", JSON.stringify(carrito))
+    
 }
 
 
