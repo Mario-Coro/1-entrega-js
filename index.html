@@ -18,14 +18,14 @@
     </head>
     <body style="min-height:100vh">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <a class=" navbar__title" href="#!">Eccomerce</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4" id="navegacion-categorias"></ul>
                     <form class="d-flex">
-                        <button id="open">
+                        <button type= "button" id="cardCart" class="" data-bs-toggle="modal" data-bs-target="#exampleModal"">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span id="cart-total" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -35,35 +35,25 @@
             </div>
         </nav>
   
-        <main id="contenedor-productos" class="cards"></main>
-
-        <button type="button" id="cardCart" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-           Productos del carrito
-          </button>
         
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cart products</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="cardsModal">
+                    </div>
+                    <div class="modal-footer" id="modalFooter" >
+                    </div>
                 </div>
-                <div class="modal-body" id="cardsModal">
-                  
-                </div>
-                <div class="modal-footer" id="modalFooter" >
-                  
-                </div>
-              </div>
             </div>
-          </div>
-
-
-          <section id="cards-modal">
-
-          </section>
-  <input type="checkbox" id="check">
+        </div>
+        
+        <main id="contenedor-productos" class="cards"></main>
+         
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>

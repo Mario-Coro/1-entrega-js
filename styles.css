@@ -11342,6 +11342,7 @@ font-family: 'Roboto Condensed', sans-serif;
   grid-template-columns: 350px 350px 350px;
   row-gap: 20px;
   justify-content: center;
+  padding-bottom: 40px;
 }
 
 .cart__button img{
@@ -11355,8 +11356,7 @@ font-family: 'Roboto Condensed', sans-serif;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  
-  font-size: 15px;
+  font-size: 18px;
   font-family: 'Roboto Condensed', sans-serif;;
   padding-bottom: 10px;
 }
@@ -11369,4 +11369,18 @@ font-family: 'Roboto Condensed', sans-serif;
 .button-img img{
   width: 35px;
   height: auto;
+}
+
+.navbar__title{
+  color: white;
+  text-decoration: none;
+  font-size: 40px;
+}
+
+body{
+  background-color: #CFD2CF;
+}
+
+.product__button{
+  margin-top: 50px;
 }

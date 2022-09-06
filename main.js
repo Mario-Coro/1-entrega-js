@@ -10,7 +10,7 @@ const metodofetch = ()=>{
     <br>
     <p class="title">${producto.nombre}</p>
     <p class="price">${producto.precio}</p>
-    <button class="add" id='agregar${producto.id}'>Agregar al carrito</button> `
+    <button class="add" id='agregar${producto.id}'>Agregar al carrito</button>`
     contenedorProductos.appendChild(div)
     const boton = document.getElementById (`agregar${producto.id}`)
     boton.addEventListener('click', ()=>{ agregarCarrito(producto.id)})
@@ -129,3 +129,4 @@ let number = carrito.findIndex(findId)
 carrito.splice(number, 1)
 actualizarCarrito()
 }
+
